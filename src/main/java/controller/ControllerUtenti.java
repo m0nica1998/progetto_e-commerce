@@ -66,6 +66,7 @@ public class ControllerUtenti {
 		return repository.findByEmailAndPassword(email, password)
                 .map(utente -> {
                     sessione.setAttribute("utente_loggato", utente);
+                    System.out.println(utente.getNome());
                     return "redirect:/";
                 })
                 .orElseGet(() -> {
@@ -79,5 +80,12 @@ public class ControllerUtenti {
 		System.out.println("entro nel form_login");
 		
 		return "utenti/form_login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout( HttpSession sessione) {
+		sessione.invalidate();
+		return "redirect:/";
+		
 	}
 }
