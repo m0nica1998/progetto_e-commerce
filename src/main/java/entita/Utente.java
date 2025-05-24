@@ -1,7 +1,7 @@
 package entita;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,9 +30,11 @@ public class Utente {
 	@Column(
 		    nullable = false,
 		    length = 255
+		    
 		   
 		    
 		)
+	@NotBlank(message = "Il nome è obbligatorio")
 	private String nome;
 	@Column(
 		    nullable = false
@@ -40,6 +42,8 @@ public class Utente {
 		   
 		    
 		)
+
+    @NotNull(message = "L'età è obbligatoria")
 	private int eta;
 	@Column(nullable = false)
     @NotNull(message = "La data di nascita è obbligatoria")
@@ -51,6 +55,8 @@ public class Utente {
 		   
 		    
 		)
+
+	@NotBlank(message = "Il numero è obbligatorio")
 	private String numero;
 	  @Column(
 			  nullable = false,
